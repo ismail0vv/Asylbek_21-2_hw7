@@ -93,7 +93,7 @@ def print_all_products(conn):
         print(e)
 
 
-def specific_print(conn):
+def search_by_price_and_quantity(conn):
     try:
         sql = '''SELECT * FROM products WHERE price < 100.00 AND quantity > 5'''
         cursor = conn.cursor()
@@ -106,7 +106,7 @@ def specific_print(conn):
         print(e)
 
 
-def print_with_word(conn, word):
+def search_by_word(conn, word):
     try:
         sql = '''SELECT * FROM products WHERE product_title LIKE ?'''
         cursor = conn.cursor()
@@ -138,7 +138,7 @@ if connection is not None:
     delete_product(connection, 1)
     print_all_products(connection)
     print('---------------------------')
-    specific_print(connection)
+    search_by_price_and_quantity(connection)
     print('---------------------------')
-    print_with_word(connection, 'мыло')
+    search_by_word(connection, 'мыло')
     print('---------------------------')
